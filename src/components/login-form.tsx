@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import SpotifyLoginButton from "../component/SpotifyLoginButton"
 
 export function LoginForm({
   className,
@@ -51,9 +52,6 @@ export function LoginForm({
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-                <Button variant="outline" className="w-full">
-                  Login with Google
-                </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
@@ -62,6 +60,7 @@ export function LoginForm({
                 Sign up
               </a>
             </div>
+            <SpotifyLoginButton />
           </form>
         </CardContent>
       </Card>

@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginForm } from "@/components/login-form";
+import Home from "@/pages/Home";
 import Callback from "@/component/Callback";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TopTracks from "@/components/TopTracks";
+import Profile from "@/pages/Profile";
 
 function Playlist() {
   const [playlist, setPlaylist] = useState<any>(null);
@@ -57,12 +59,11 @@ function App() {
       <div className="flex justify-center items-center w-screen h-screen">
         <div className="w-full max-w-lg">
           <Routes>
-            <Route path="/" element={
-              <LoginForm />
-              } />
+            <Route path="/" element={<Home />} />
             <Route path="/callback" element={<Callback />} />
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/top-tracks" element={<TopTracks />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </div>

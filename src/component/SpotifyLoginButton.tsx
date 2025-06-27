@@ -2,7 +2,7 @@ import { generateCodeVerifier, generateCodeChallenge } from "@/lib/pkce";
 
 const CLIENT_ID = "5efe9078d47248d9b2c27ff4d2a414d5";
 const REDIRECT_URI = "http://127.0.0.1:5173/callback";
-const SCOPES = "playlist-read-private";
+const SCOPES = "user-top-read";
 
 function SpotifyLoginButton() {
   const handleLogin = async () => {

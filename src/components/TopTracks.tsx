@@ -25,19 +25,42 @@ function TopTracks() {
   }
 
   if (!tracks.length) {
-    return <div className="flex items-center justify-center min-h-screen">Loading top tracks...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-400"></div>
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Your Top 5 Spotify Tracks</h1>
-      <ul>
-        {tracks.map((track) => (
-          <li key={track.id} className="mb-2">
-            {track.name} — {track.artists.map((a: any) => a.name).join(", ")}
-          </li>
-        ))}
-      </ul>
+    <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black">
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-10 text-white drop-shadow-lg text-center">
+          Your Top 5 Spotify Tracks
+        </h1>
+        <div className="backdrop-blur-md bg-white/10 rounded-2xl shadow-xl p-8 w-full max-w-xl">
+          <ul className="space-y-6">
+            {tracks.map((track, idx) => (
+              <li
+                key={track.id}
+                className={`flex items-center gap-4 p-4 rounded-xl hover:bg-white/20 transition-colors cursor-pointer`}
+                onClick={() => window.open(track.external_urls.spotify, "_blank")}
+              >
+                <span className="text-2xl font-bold text-green-400 w-8 text-right">{idx + 1}.</span>
+                <img
+                  src={track.album.images[2]?.url || track.album.images[0]?.url}
+                  alt={track.name}
+                  className="w-14 h-14 rounded-lg object-cover shadow"
+                />
+                <div className="flex-1">
+                  <div className="text-lg md:text-2xl font-semibold text-white truncate">{track.name}</div>
+                  <div className="text-sm text-gray-200">{track.artists.map((a: any) => a.name).join(", ")}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
